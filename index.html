@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>��ҳ</title>
+<meta charset="utf-8">
+<title>首页</title>
 <style type="text/css">
 <!--
 body {
@@ -39,7 +39,7 @@ this.li[i].o = 100;
 //setOpacity(this.li[i],this.li.o);
 this.li[i].style.opacity = this.li[i].o/100;
 this.li[i].style.filter = 'alpha(opacity='+this.li[i].o+')';
-//���ƿ�����
+//绘制控制器
 var nav = document.createElement('a');
 nav.className = options.navClass?options.navClass:'fader-nav';
 nav.innerHTML = i+1;
@@ -70,7 +70,7 @@ this.z++;
 curLi.style.zIndex = this.z;
 this.alt.style.zIndex = this.z+1;
 nav_wp.style.zIndex = this.z+2;
-this.li.a=false;//��仰�Ǳ�Ҫ��
+this.li.a=false;//这句话是必要的
 this.cur = i;
 //setOpacity(curLi[i],0);
 if(this.li[i].o>=100){
@@ -89,7 +89,7 @@ fade:function(i){
 var p=this.li[i];
 if(p.o>=100){
 clearInterval(p.f);
-if(!this.li.a){//һ��Ҫ�����������Ƿ��Ѿ�clearInterval���жϣ�Ҫ��Ȼ�ڿ��ٵ����ʱ��ᵼ��ͼƬ��ͣ����
+if(!this.li.a){//一定要在这里做个是否已经clearInterval的判断，要不然在快速点击的时候会导致图片不停地闪
 this.auto();
 }
 }
@@ -226,22 +226,22 @@ function MM_initTimelines() { //v4.0
 <body onload="MM_timelinePlay('Timeline1')">
 <div id="div2"><div id="img1"><img src="images/6.png"/></div><table id="table1">
     <tr>
-      <td><img src="images/11.png" /><div class="current"><a href="index.html">��ҳ</a></div></td>
-      <td><img src="images/12.png" /><div class="other"><a href="introduce.html">��������</a></div></td>
-      <td><img src="images/13.png" /><div class="other"><a href="photo.html">�������</a></div></td>
-      <td><img src="images/12.png" /><div class="other"><a href="music/bofangzy.html">��������</a></div></td>
-      <td><img src="images/11.png" /><div class="other"><a href="about.html">��������</a></div></td>
+      <td><img src="images/11.png" /><div class="current"><a href="index.html">首页</a></div></td>
+      <td><img src="images/12.png" /><div class="other"><a href="introduce.html">动漫介绍</a></div></td>
+      <td><img src="images/13.png" /><div class="other"><a href="photo.html">动漫相册</a></div></td>
+      <td><img src="images/12.png" /><div class="other"><a href="music/bofangzy.html">动漫音乐</a></div></td>
+      <td><img src="images/11.png" /><div class="other"><a href="about.html">关于我们</a></div></td>
     </tr>
 </table></div>
 <div id="div1">
 <div id="fader">
  <ul>
-  <li><img src="images/34.jpg" alt="��Ӱ����" height="310px" width="640px"></li>
-  <li><img src="images/52.jpg" alt="�����ľ���" height="310px" width="640px"></li>
-  <li><img src="images/41.jpg" alt="ǧ��ǧѰ" height="310px" width="640px"></li>
-  <li><img src="images/65.jpg" alt="����ʳʬ��" height="310px" width="640px"></li>
-  <li><img src="images/112.jpg" alt="�����ľ���" height="310px" width="640px"></li>
-  <li><img src="images/24.jpg" alt="ն�����֮ͫ" height="310px" width="640px"></li>
+  <li><img src="images/34.jpg" alt="火影忍者" height="310px" width="640px"></li>
+  <li><img src="images/52.jpg" alt="进击的巨人" height="310px" width="640px"></li>
+  <li><img src="images/41.jpg" alt="千与千寻" height="310px" width="640px"></li>
+  <li><img src="images/65.jpg" alt="东京食尸鬼" height="310px" width="640px"></li>
+  <li><img src="images/112.jpg" alt="进击的巨人" height="310px" width="640px"></li>
+  <li><img src="images/24.jpg" alt="斩！赤红之瞳" height="310px" width="640px"></li>
  </ul>
 </div>
 <script type="text/javascript">    
@@ -249,11 +249,11 @@ var fader = new Hongru.fader.init('fader', {id: 'fader'});
 </script>
 <div id="img2"><img src="images/2.png" /></div>
 <div id="div3"><div id="div4"><div id="div5" style="height: 530px; top: 0px;">
-�������Ƕ���������д���ĺϳ�����ȡ�������ʵĵ�һ���ֺ϶�Ϊһ��֮Ϊ����������
-������������Ϊ���������ձ��Ķ�����ר�����ʡ�
-�ֿɿ�֤���ô������Ϊ1993�괴��Ķ�������ͬҵЭ������1998�괴���Ķ�����Ѷ���¿�������ʱ����Anime Comic Time���������ɡ����ѡ���־�������������ǿ�ڴ�½������ʹ�ÿ�ʼ�ռ����������й����⣬��û�д���˵����
-������֮�⣬����Ȧ��϶��ϰ���Խ�������anime����������comic������Ϸ��game�����ߺϳ���ACG���������С˵��novel���ϳ�ΪACGN���ձ���ʹ��ACG����ʣ��ϳ�ʹ�õ����Ƹ�����MAG���ޥ�������Manga����������Anime����������Game����Ϸ��֮��д���ձ��İ����߼䳣��2��Ԫ����ָһϵ�еĶ����Ļ���������С˵���ְ�ȣ���һ�����ԥ������Ļ���otaku/��լ�Ļ�����ָ���������Ļ�����������ҵָ�������ҵ�硣���⣬Ӣ��cartoon���������롰��ͨ����Ҳ�������붯���ĺϳƣ�����ʱ��ָ������ʽ������
-��ΪĳЩý�����������ʹ�ã���ʼ����רָ�������ı�Ķ�����Ʒ�������ձ���Ʒ�Ķ�����Ʒ���Ⱥ����ʹ�÷�ʽ������Խ���ռ��������������������������������һ��ʼ��������ȷ��ָ����������÷�ֻ����ԭ�������Ĵ�����ģ�����Զﴫ�ﲢ����ȡ��
+动漫，是动画和漫画写，的合称与缩取这两个词的第一个字合二为一称之为“动漫”。
+现仍有人误以为动漫就是日本的动画的专有名词。
+现可考证，该词语出处为1993年创办的动漫出版同业协进会与1998年创刊的动漫资讯类月刊《动漫时代（Anime Comic Time）》，后经由《漫友》杂志传开，因概括性强在大陆地区的使用开始普及起来。在中国以外，并没有此种说法。
+除动漫之外，华文圈亦较多地习惯性将动画（anime）、漫画（comic）、游戏（game）三者合称作ACG，或加上轻小说（novel）合称为ACGN。日本不使用ACG这个词，较常使用的类似概念有MAG（マグ），即Manga（漫画）、Anime（动画）、Game（游戏）之缩写。日本的爱好者间常用2次元来代指一系列的动漫文化（包括轻小说，手办等）。一般则以オタク文化（otaku/御宅文化）泛指相关领域次文化、オタク产业指相关领域业界。另外，英语cartoon的中文音译“卡通”，也是漫画与动画的合称，但有时特指是美国式动画。
+因为某些媒体望文生义的使用，开始出现专指“漫画改编的动画作品”、“日本出品的动画作品”等含义的使用方式，并且越发普及起来。动漫、动画和漫画三个词语从一开始就有着明确的指代，错误的用法只会令原本清晰的词义变得模糊，以讹传讹并不可取。
 </div>
 </div></div>
 </div>
