@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>首页</title>
+<style type="text/css">
+<!--
+body {
+	background-image: url(images/0.jpg);
+	background-attachment: fixed;
+}
+-->
+</style>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/JavaScript">
+<!--
+var Hongru = {};
+function H$(id) { return document.getElementById(id) }
+function H$$(c, p) { return p.getElementsByTagName(c) }
+Hongru.fader = function () {
+function init(anchor, options) {
+this.anchor = anchor;
+var wp = H$(options.id),ul = H$$('ul', wp)[0],li = this.li = H$$('li', ul);
+this.index = options.position ? options.position : 0;
+this.a = options.auto ? options.auto : 2;
+this.cur = this.z = 0;
+this.l = li.length;
+this.img = [];
+for (var k = 0; k < this.l; k++) {
+this.img.push(H$$('img', this.li[k])[0]);
+}
+this.curC = options.curNavClass ? options.curNavClass : 'fader-cur-nav';
+nav_wp = document.createElement('div');
+nav_wp.id = 'fader-nav';
+nav_wp.style.cssText = 'position:absolute;right:0;bottom:0;padding:8px 0;';
+var alt = this.alt = document.createElement('p');
+for (var i = 0; i < this.l; i++) {
+this.li[i].o = 100;
+//setOpacity(this.li[i],this.li.o);
+this.li[i].style.opacity = this.li[i].o/100;
+this.li[i].style.filter = 'alpha(opacity='+this.li[i].o+')';
+//绘制控制器
+var nav = document.createElement('a');
+nav.className = options.navClass?options.navClass:'fader-nav';
+nav.innerHTML = i+1;
+nav.onclick = new Function(this.anchor+'.pos('+i+')');
+nav_wp.appendChild(nav);
+}
+wp.appendChild(alt);  
+wp.appendChild(nav_wp);
+this.textH = nav_wp.offsetHeight;
+alt.style.cssText = 'color:#fff;font-size:12px;padding-left:20px;margin:0;position:absolute;left:0;bottom:0;overflow:hidden;width:100%;background:#000;opacity:0.7;filter:alpha(opacity=70);';
+alt.style.height = alt.style.lineHeight = this.textH+'px';
+this.pos(this.index);
+}
+init.prototype={
+auto:function(){
+this.li.a = setInterval(new Function(this.anchor+'.move(1)'),this.a*1000); 
+},
+move:function(i){
+var n = this.cur+i;
+var m = i==1?n==this.l?0:n:n<0?this.l-1:n;
+this.pos(m);
+},
+pos:function(i){
+clearInterval(this.li.a);
+clearInterval(this.li[i].f);
+var curLi = this.li[i];
+this.z++;
+curLi.style.zIndex = this.z;
+this.alt.style.zIndex = this.z+1;
+nav_wp.style.zIndex = this.z+2;
+this.li.a=false;//这句话是必要的
+this.cur = i;
+//setOpacity(curLi[i],0);
+if(this.li[i].o>=100){
+this.li[i].o = 0;
+curLi.style.opacity = 0;
+curLi.style.filter = 'alpha(opacity=0)';
+this.alt.style.height = '0px';
+}
+for(var x=0;x<this.l;x++){
+nav_wp.getElementsByTagName('a')[x].className = x==i?this.curC:'fader-nav';
+}
+this.alt.innerHTML = this.img[i].alt;
+this.li[i].f = setInterval(new Function(this.anchor+'.fade('+i+')'),20);
+},
+fade:function(i){
+var p=this.li[i];
+if(p.o>=100){
+clearInterval(p.f);
+if(!this.li.a){//一定要在这里做个是否已经clearInterval的判断，要不然在快速点击的时候会导致图片不停地闪
+this.auto();
+}
+}
+else{
+p.o+=5;
+//setOpacity(this.li[i],this.li[i].o);
+p.style.opacity = p.o/100;
+p.style.filter = 'alpha(opacity='+p.o+')';
+this.alt.style.height = Math.ceil(p.o*this.textH/100)+'px';
+}
+}
+};
+return {init:init};
+}();
+function MM_timelinePlay(tmLnName, myID) { //v1.2
+  //Copyright 1998, 1999, 2000, 2001, 2002, 2003, 2004 Macromedia, Inc. All rights reserved.
+  var i,j,tmLn,props,keyFrm,sprite,numKeyFr,firstKeyFr,propNum,theObj,firstTime=false;
+  if (document.MM_Time == null) MM_initTimelines(); //if *very* 1st time
+  tmLn = document.MM_Time[tmLnName];
+  if (myID == null) { myID = ++tmLn.ID; firstTime=true;}//if new call, incr ID
+  if (myID == tmLn.ID) { //if Im newest
+    setTimeout('MM_timelinePlay("'+tmLnName+'",'+myID+')',tmLn.delay);
+    fNew = ++tmLn.curFrame;
+    for (i=0; i<tmLn.length; i++) {
+      sprite = tmLn[i];
+      if (sprite.charAt(0) == 's') {
+        if (sprite.obj) {
+          numKeyFr = sprite.keyFrames.length; firstKeyFr = sprite.keyFrames[0];
+          if (fNew >= firstKeyFr && fNew <= sprite.keyFrames[numKeyFr-1]) {//in range
+            keyFrm=1;
+            for (j=0; j<sprite.values.length; j++) {
+              props = sprite.values[j]; 
+              if (numKeyFr != props.length) {
+                if (props.prop2 == null) sprite.obj[props.prop] = props[fNew-firstKeyFr];
+                else        sprite.obj[props.prop2][props.prop] = props[fNew-firstKeyFr];
+              } else {
+                while (keyFrm<numKeyFr && fNew>=sprite.keyFrames[keyFrm]) keyFrm++;
+                if (firstTime || fNew==sprite.keyFrames[keyFrm-1]) {
+                  if (props.prop2 == null) sprite.obj[props.prop] = props[keyFrm-1];
+                  else        sprite.obj[props.prop2][props.prop] = props[keyFrm-1];
+        } } } } }
+      } else if (sprite.charAt(0)=='b' && fNew == sprite.frame) eval(sprite.value);
+      if (fNew > tmLn.lastFrame) tmLn.ID = 0;
+  } }
+}
+
+function MM_timelineGoto(tmLnName, fNew, numGotos) { //v2.0
+  //Copyright 1998, 1999, 2000, 2001, 2002, 2003, 2004 Macromedia, Inc. All rights reserved.
+  var i,j,tmLn,props,keyFrm,sprite,numKeyFr,firstKeyFr,lastKeyFr,propNum,theObj;
+  if (document.MM_Time == null) MM_initTimelines(); //if *very* 1st time
+  tmLn = document.MM_Time[tmLnName];
+  if (numGotos != null)
+    if (tmLn.gotoCount == null) tmLn.gotoCount = 1;
+    else if (tmLn.gotoCount++ >= numGotos) {tmLn.gotoCount=0; return}
+  jmpFwd = (fNew > tmLn.curFrame);
+  for (i = 0; i < tmLn.length; i++) {
+    sprite = (jmpFwd)? tmLn[i] : tmLn[(tmLn.length-1)-i]; //count bkwds if jumping back
+    if (sprite.charAt(0) == "s") {
+      numKeyFr = sprite.keyFrames.length;
+      firstKeyFr = sprite.keyFrames[0];
+      lastKeyFr = sprite.keyFrames[numKeyFr - 1];
+      if ((jmpFwd && fNew<firstKeyFr) || (!jmpFwd && lastKeyFr<fNew)) continue; //skip if untouchd
+      for (keyFrm=1; keyFrm<numKeyFr && fNew>=sprite.keyFrames[keyFrm]; keyFrm++);
+      for (j=0; j<sprite.values.length; j++) {
+        props = sprite.values[j];
+        if (numKeyFr == props.length) propNum = keyFrm-1 //keyframes only
+        else propNum = Math.min(Math.max(0,fNew-firstKeyFr),props.length-1); //or keep in legal range
+        if (sprite.obj != null) {
+          if (props.prop2 == null) sprite.obj[props.prop] = props[propNum];
+          else        sprite.obj[props.prop2][props.prop] = props[propNum];
+      } }
+    } else if (sprite.charAt(0)=='b' && fNew == sprite.frame) eval(sprite.value);
+  }
+  tmLn.curFrame = fNew;
+  if (tmLn.ID == 0) eval('MM_timelinePlay(tmLnName)');
+}
+
+function MM_initTimelines() { //v4.0
+    //MM_initTimelines() Copyright 1997 Macromedia, Inc. All rights reserved.
+    var ns = navigator.appName == "Netscape";
+    var ns4 = (ns && parseInt(navigator.appVersion) == 4);
+    var ns5 = (ns && parseInt(navigator.appVersion) > 4);
+    var macIE5 = (navigator.platform ? (navigator.platform == "MacPPC") : false) && (navigator.appName == "Microsoft Internet Explorer") && (parseInt(navigator.appVersion) >= 4);
+    document.MM_Time = new Array(1);
+    document.MM_Time[0] = new Array(2);
+    document.MM_Time["Timeline1"] = document.MM_Time[0];
+    document.MM_Time[0].MM_Name = "Timeline1";
+    document.MM_Time[0].fps = 15;
+    document.MM_Time[0][0] = new String("sprite");
+    document.MM_Time[0][0].slot = 1;
+    if (ns4)
+        document.MM_Time[0][0].obj = document["div3"] ? document["div3"].document["div4"].document["div5"] : document["div4"].document["div5"];
+    else if (ns5)
+        document.MM_Time[0][0].obj = document.getElementById("div5");
+    else
+        document.MM_Time[0][0].obj = document.all ? document.all["div5"] : null;
+    document.MM_Time[0][0].keyFrames = new Array(1, 120);
+    document.MM_Time[0][0].values = new Array(3);
+    if (ns5 || macIE5)
+        document.MM_Time[0][0].values[0] = new Array("0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px");
+    else
+        document.MM_Time[0][0].values[0] = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+    document.MM_Time[0][0].values[0].prop = "left";
+    if (ns5 || macIE5)
+        document.MM_Time[0][0].values[1] = new Array("0px", "-3px", "-5px", "-8px", "-10px", "-13px", "-15px", "-18px", "-20px", "-23px", "-25px", "-28px", "-30px", "-33px", "-35px", "-38px", "-40px", "-43px", "-45px", "-48px", "-50px", "-53px", "-55px", "-58px", "-61px", "-63px", "-66px", "-68px", "-71px", "-73px", "-76px", "-78px", "-81px", "-83px", "-86px", "-88px", "-91px", "-93px", "-96px", "-98px", "-101px", "-103px", "-106px", "-108px", "-111px", "-113px", "-116px", "-118px", "-121px", "-124px", "-126px", "-129px", "-131px", "-134px", "-136px", "-139px", "-141px", "-144px", "-146px", "-149px", "-151px", "-154px", "-156px", "-159px", "-161px", "-164px", "-166px", "-169px", "-171px", "-174px", "-176px", "-179px", "-182px", "-184px", "-187px", "-189px", "-192px", "-194px", "-197px", "-199px", "-202px", "-204px", "-207px", "-209px", "-212px", "-214px", "-217px", "-219px", "-222px", "-224px", "-227px", "-229px", "-232px", "-234px", "-237px", "-239px", "-242px", "-245px", "-247px", "-250px", "-252px", "-255px", "-257px", "-260px", "-262px", "-265px", "-267px", "-270px", "-272px", "-275px", "-277px", "-280px", "-282px", "-285px", "-287px", "-290px", "-292px", "-295px", "-297px", "-300px");
+    else
+        document.MM_Time[0][0].values[1] = new Array(0,-3,-5,-8,-10,-13,-15,-18,-20,-23,-25,-28,-30,-33,-35,-38,-40,-43,-45,-48,-50,-53,-55,-58,-61,-63,-66,-68,-71,-73,-76,-78,-81,-83,-86,-88,-91,-93,-96,-98,-101,-103,-106,-108,-111,-113,-116,-118,-121,-124,-126,-129,-131,-134,-136,-139,-141,-144,-146,-149,-151,-154,-156,-159,-161,-164,-166,-169,-171,-174,-176,-179,-182,-184,-187,-189,-192,-194,-197,-199,-202,-204,-207,-209,-212,-214,-217,-219,-222,-224,-227,-229,-232,-234,-237,-239,-242,-245,-247,-250,-252,-255,-257,-260,-262,-265,-267,-270,-272,-275,-277,-280,-282,-285,-287,-290,-292,-295,-297,-300);
+    document.MM_Time[0][0].values[1].prop = "top";
+    if (!ns4) {
+        document.MM_Time[0][0].values[0].prop2 = "style";
+        document.MM_Time[0][0].values[1].prop2 = "style";
+    }
+    if (ns5 || macIE5)
+        document.MM_Time[0][0].values[2] = new Array("530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px", "530px");
+    else
+        document.MM_Time[0][0].values[2] = new Array(530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530,530);
+    document.MM_Time[0][0].values[2].prop = "height";
+    if (!ns4)
+        document.MM_Time[0][0].values[2].prop2 = "style";
+    document.MM_Time[0][1] = new String("behavior");
+    document.MM_Time[0][1].frame = 121;
+    document.MM_Time[0][1].value = "MM_timelineGoto('Timeline1','1')";
+    document.MM_Time[0].lastFrame = 121;
+    for (i=0; i<document.MM_Time.length; i++) {
+        document.MM_Time[i].ID = null;
+        document.MM_Time[i].curFrame = 0;
+        document.MM_Time[i].delay = 1000/document.MM_Time[i].fps;
+    }
+}
+//-->
+</script>
+</head>
+
+<body onload="MM_timelinePlay('Timeline1')">
+<div id="div2"><div id="img1"><img src="images/6.png"/></div><table id="table1">
+    <tr>
+      <td><img src="images/11.png" /><div class="current"><a href="index.html">首页</a></div></td>
+      <td><img src="images/12.png" /><div class="other"><a href="introduce.html">动漫介绍</a></div></td>
+      <td><img src="images/13.png" /><div class="other"><a href="photo.html">动漫相册</a></div></td>
+      <td><img src="images/12.png" /><div class="other"><a href="music/bofangzy.html">动漫音乐</a></div></td>
+      <td><img src="images/11.png" /><div class="other"><a href="about.html">关于我们</a></div></td>
+    </tr>
+</table></div>
+<div id="div1">
+<div id="fader">
+ <ul>
+  <li><img src="images/34.jpg" alt="火影忍者" height="310px" width="640px"></li>
+  <li><img src="images/52.jpg" alt="进击的巨人" height="310px" width="640px"></li>
+  <li><img src="images/41.jpg" alt="千与千寻" height="310px" width="640px"></li>
+  <li><img src="images/65.jpg" alt="东京食尸鬼" height="310px" width="640px"></li>
+  <li><img src="images/112.jpg" alt="进击的巨人" height="310px" width="640px"></li>
+  <li><img src="images/24.jpg" alt="斩！赤红之瞳" height="310px" width="640px"></li>
+ </ul>
+</div>
+<script type="text/javascript">    
+var fader = new Hongru.fader.init('fader', {id: 'fader'});
+</script>
+<div id="img2"><img src="images/2.png" /></div>
+<div id="div3"><div id="div4"><div id="div5" style="height: 530px; top: 0px;">
+动漫，是动画和漫画写，的合称与缩取这两个词的第一个字合二为一称之为“动漫”。
+现仍有人误以为动漫就是日本的动画的专有名词。
+现可考证，该词语出处为1993年创办的动漫出版同业协进会与1998年创刊的动漫资讯类月刊《动漫时代（Anime Comic Time）》，后经由《漫友》杂志传开，因概括性强在大陆地区的使用开始普及起来。在中国以外，并没有此种说法。
+除动漫之外，华文圈亦较多地习惯性将动画（anime）、漫画（comic）、游戏（game）三者合称作ACG，或加上轻小说（novel）合称为ACGN。日本不使用ACG这个词，较常使用的类似概念有MAG（マグ），即Manga（漫画）、Anime（动画）、Game（游戏）之缩写。日本的爱好者间常用2次元来代指一系列的动漫文化（包括轻小说，手办等）。一般则以オタク文化（otaku/御宅文化）泛指相关领域次文化、オタク产业指相关领域业界。另外，英语cartoon的中文音译“卡通”，也是漫画与动画的合称，但有时特指是美国式动画。
+因为某些媒体望文生义的使用，开始出现专指“漫画改编的动画作品”、“日本出品的动画作品”等含义的使用方式，并且越发普及起来。动漫、动画和漫画三个词语从一开始就有着明确的指代，错误的用法只会令原本清晰的词义变得模糊，以讹传讹并不可取。
+</div>
+</div></div>
+</div>
+</body>
+</html>

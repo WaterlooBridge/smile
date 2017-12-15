@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+<head>
+<title>动漫相册</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script type="text/javascript" src="js/jquery-1.8.0.js"></script>
+<script type="text/JavaScript" src="js/cloud-carousel.1.0.5.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$("#da-vinci-carousel").CloudCarousel( { 
+reflHeight: 56,
+reflGap:2,
+titleBox: $('#da-vinci-title'),
+altBox: $('#da-vinci-alt'),
+buttonLeft: $('#but1'),
+buttonRight: $('#but2'),
+yRadius:40,
+xPos: 285,
+yPos: 120,
+speed:0.15
+});
+$("#carousel2").CloudCarousel({			
+xPos:280,
+yPos:80,
+buttonLeft: $('#but3'),
+buttonRight: $('#but4'),				
+FPS:30,
+autoRotate: 'left',
+autoRotateDelay: 1200,
+speed:0.2,
+mouseWheel:true,
+bringToFront:true
+});	
+});
+</script>
+</head>
+<body>
+<table style="border-collapse:collapse;position:absolute;top:50px;right:100px" cellPadding=0>
+  <tr>
+    <td width=82 height=46><IMG height=46 src="images/top.jpg" width=82></td>
+  </tr>
+  <tr>
+    <td width=82 background="images/down.jpg" height=289 style="text-align:center"><a href="index.html" style="font-size:36px;text-decoration:none">返<br />回<br />首<br />页</a></td>
+  </tr>
+</table>
+<center>
+<br><br><br>
+<div id="da-vinci-carousel" style="width:570px; height:600px;background: url(images/bg.jpg);overflow:scroll;">
+<a href="photo/ghoul.html" rel='lightbox' title="东京食尸鬼"><img class="cloudcarousel" src="images/7.png" width="128" height="164" alt="studio Pierrot改编的电视动画" title="东京食尸鬼" /></a>  
+<a href="photo/naruto.html" rel='lightbox' title="火影忍者"><img class="cloudcarousel" src="images/8.jpg" width="128" height="164" alt="岸本齐史创作的少年漫画" title="火影忍者" /></a>
+<a href="photo/raid.html" rel='lightbox' title="斩！赤红之瞳"><img class="cloudcarousel" src="images/68.jpg" width="128" height="164" alt="タカヒロ原作、田代哲也作画的漫画" title="斩！赤红之瞳" /></a>
+<a href="photo/attack.html" rel="lightbox" title="死神"><img class="cloudcarousel" src="images/69.jpg" width="128" height="164" alt="日本漫画家久保带人创作的漫画" title="死神" /></a>
+<a href="photo/piece.html" rel="lightbox" title="海贼王"><img class="cloudcarousel" src="images/70.jpg" width="128" height="164" alt="东映制作的动画" title="海贼王" /></a>
+<a href="photo/ghoul.html" rel="lightbox" title="犬夜叉"><img class="cloudcarousel" src="images/73.jpg" width="128" height="164" alt="动漫《犬夜叉》男主角" title="犬夜叉" /></a>
+<a href="photo/naruto.html" rel="lightbox" title="名侦探柯南" ><img class="cloudcarousel" src="images/76.jpg" width="128" height="164" alt="漫画改编的长篇推理动画" title="名侦探柯南" /></a>
+<a href="photo/attack.html" rel="lightbox" title="进击的巨人"><img class="cloudcarousel" src="images/17.png" width="128" height="164" alt="WIT STUDIO制作的电视动画" title="进击的巨人" /></a>
+<a href="photo/raid.html" rel="lightbox" title="寄生兽"><img class="cloudcarousel" src="images/86.jpg" width="128" height="164" alt="岩明均创作的科幻漫画" title="寄生兽" /></a>
+<div id="da-vinci-title"></div>
+<div id="da-vinci-alt"></div>
+<div id="but1" class="carouselLeft" style="position:absolute;top:400px;right:300px;"></div>
+<div id="but2" class="carouselRight" style="position:absolute;top:400px;right:20px;"></div>      
+</div>
+</center>
+</body>
+</html>

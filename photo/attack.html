@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0; list-style:none}
+body{ font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:1.8;}
+img{ display:block; border:0;}
+h1,h2{ background:#E5D9A7; line-height:2.5; font-size:14px; padding-left:10px; color:#E5D9Af;}
+#www_zzjs_net{ border-right:3px solid ##E5D9Af; background:#E5D9A7; width:750px;margin:0 auto;}
+li{ float:left;}
+a{ display:block; background:#E5D9Af; border:1px solid #E5D9A7; text-align:center; color:#7e5736; text-decoration:none; padding:5px; margin:10px;}
+a:hover,a:active{ background:#E5D9Af; border:1px solid #E5D9A7; border-left:1px solid #E5D9Af; border-top:1px solid #E5D9Af; color:red}
+#showpic{ border:1px solid #E5D9Af; padding:5px; display:none; clear:left; background:#E5D9Af; text-align: center}
+ul,#showpic{ margin:10px;}
+h2{ color:#598628; background:none; text-align:left}
+#showpic img{ margin:auto;height: 525px;width: 700px;}
+</style>
+</head>
+
+<body>
+<table style="border-collapse:collapse;position:absolute;top:50px;right:100px" cellPadding=0>
+  <tr>
+    <td width=82 height=46><IMG height=46 src="../images/top.jpg" width=82></td>
+  </tr>
+  <tr>
+    <td width=82 background="../images/down.jpg" height=289 style="text-align:center"><a href="../index.html" style="font-size:36px">返<br />回<br />首<br />页</a></td>
+  </tr>
+</table>
+<div id="www_zzjs_net">
+<ul>
+<li class=active><a href="../images/91.jpg"><img src="../images/91.jpg" width="113" height="83" border="0" />进击的巨人</a></li>
+<li><a href="../images/21.jpg"><img src="../images/21.jpg" width="113" height="83" border="0" />艾伦</a></li>
+<li><a href="../images/13.jpg"><img src="../images/13.jpg" width="113" height="83" border="0" />三笠</a></li>
+<li><a href="../images/92.jpg"><img src="../images/92.jpg" width="113" height="83" border="0" />利威尔</a></li>
+<li><a href="../images/93.jpg"><img src="../images/93.jpg" width="113" height="83" border="0" />阿诺德</a></li>
+<li><a href="../images/94.jpg"><img src="../images/94.jpg" width="113" height="83" border="0" />耶格尔</a></li>
+<li><a href="../images/95.jpg"><img src="../images/95.jpg" width="113" height="83" border="0" />阿明</a></li>
+<li><a href="../images/96.jpg"><img src="../images/96.jpg" width="113" height="83" border="0" />阿克曼</a></li>
+<li><a href="../images/111.jpg"><img src="../images/111.jpg" width="113" height="83" border="0" />艾尔敏</a></li>
+<li><a href="../images/112.jpg"><img src="../images/112.jpg" width="113" height="83" border="0" />萨莎</a></li>
+</ul>
+</div>
+
+<div align="center">
+    <script language="javascript">
+function setDiv(){
+var www_zzjs_net = document.getElementById("www_zzjs_net");
+var showpic = document.createElement("div");
+showpic.setAttribute("id", "showpic");
+www_zzjs_net.appendChild(showpic);
+
+showpic.appendChild(document.createElement("img"));
+var links = www_zzjs_net.getElementsByTagName("a");
+for(var k=0; k<links.length; k++){
+links[k].onclick = function(){
+return showPic(this);
+}
+}
+}
+function showPic(pic){
+var showpic = document.getElementById("showpic");
+showpic.style.display = "block";
+
+showpic.getElementsByTagName("img")[0].setAttribute("src", pic.href);
+return false;
+}
+window.onload = setDiv;
+  </script>
+  <br>
+  <img src="../images/91.jpg" width="700" height="525" />
+  </div>
+</body>
+</html>
